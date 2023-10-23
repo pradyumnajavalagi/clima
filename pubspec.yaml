@@ -70,3 +70,7 @@ flutter:
       fonts:
         - asset: fonts/SpartanMB-Black.otf
           weight: 900
+    - family: SF pro Display
+      fonts:
+        - asset: fonts/SFPRODISPLAYREGULAR.OTF
+          weight: 100

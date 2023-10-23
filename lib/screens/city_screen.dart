@@ -78,7 +78,7 @@ class _CityScreenState extends State<CityScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/city_background.jpg'),
+            image: AssetImage('images/img.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -92,12 +92,35 @@ class _CityScreenState extends State<CityScreen> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 50.0,
+                  child: Container(
+                    height: 60.0,
+                    width: 60.0,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF3E4772),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(20),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.arrow_back_rounded,
+                      color: Colors.white,
+                      size: 40.0,
+                    ),
                   ),
                 ),
               ),
+              SizedBox(height: 60,),
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
@@ -110,7 +133,7 @@ class _CityScreenState extends State<CityScreen> {
                   },
                 ),
               ),
-              TextButton(
+              OutlinedButton(
                 onPressed: () {
                   Navigator.pop(context, cityName);
                 },

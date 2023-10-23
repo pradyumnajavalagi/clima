@@ -139,9 +139,9 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   WeatherModel weather = WeatherModel();
-  int temperature =0 ;
-  String weatherIcon ='';
-  String cityName ='';
+  int temperature = 0;
+  String weatherIcon = '';
+  String cityName = '';
   String weatherMessage = '';
 
   @override
@@ -175,7 +175,7 @@ class _LocationScreenState extends State<LocationScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/location_background.jpg'),
+            image: AssetImage('images/location_background.png'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
@@ -184,7 +184,7 @@ class _LocationScreenState extends State<LocationScreen> {
         constraints: BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Row(
@@ -195,9 +195,31 @@ class _LocationScreenState extends State<LocationScreen> {
                       var weatherData = await weather.getLocationWeather();
                       updateUI(weatherData);
                     },
-                    child: Icon(
-                      Icons.near_me,
-                      size: 50.0,
+                    child: Container(
+                      height: 60.0,
+                      width: 60.0,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF3E4772),
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(20),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.near_me,
+                        color: Colors.white,
+                        size: 40.0,
+                      ),
                     ),
                   ),
                   TextButton(
@@ -212,16 +234,41 @@ class _LocationScreenState extends State<LocationScreen> {
                       );
                       if (typedName != null) {
                         var weatherData =
-                        await weather.getCityWeather(typedName);
+                            await weather.getCityWeather(typedName);
                         updateUI(weatherData);
                       }
                     },
-                    child: Icon(
-                      Icons.location_city,
-                      size: 50.0,
+                    child: Container(
+                      height: 60.0,
+                      width: 60.0,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF3E4772),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(
+                              -5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.location_city,
+                        color: Colors.white,
+                        size: 40.0,
+                      ),
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 40,
               ),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
@@ -229,6 +276,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   children: <Widget>[
                     Text(
                       '$temperature°',
+                      textAlign: TextAlign.center,
                       style: kTempTextStyle,
                     ),
                     Text(
@@ -238,11 +286,14 @@ class _LocationScreenState extends State<LocationScreen> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 60,
+              ),
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
                   '$weatherMessage in $cityName',
-                  textAlign: TextAlign.right,
+                  textAlign: TextAlign.center,
                   style: kMessageTextStyle,
                 ),
               ),

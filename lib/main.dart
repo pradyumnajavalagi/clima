@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:clima/screens/loading_screen.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async{
+  runApp(MyApp());}
 
 class MyApp extends StatelessWidget {
   @override

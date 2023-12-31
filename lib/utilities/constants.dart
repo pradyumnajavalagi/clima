@@ -8,7 +8,7 @@ const kTempTextStyle = TextStyle(
 
 const kMessageTextStyle = TextStyle(
   fontFamily: 'SF pro Display',
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w600,
   fontSize: 30.0,
 );
 

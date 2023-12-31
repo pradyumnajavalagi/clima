@@ -74,8 +74,7 @@
 import 'package:clima/services/location.dart';
 import 'package:clima/services/networking.dart';
 
-
-const apiKey = "72c2652a835426da1f76585921ebd4b8";
+const apiKey = "cd5a2e569524f2d39dbdf5d92a589ff1";
 const openWeatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 class WeatherModel {
@@ -113,6 +112,20 @@ class WeatherModel {
       return '☁';
     } else {
       return '🤷‍';
+    }
+  }
+  String getBackground(int temp) {
+    if (temp > 25){
+      return 'images/sunny.jpg';
+    }
+    else if(temp >20){
+      return 'images/cloudy.jpg';
+    }
+    else if(temp < 10){
+      return 'images/winter.jpg';
+    }
+    else{
+      return 'images/rainy.jpg';
     }
   }
 
